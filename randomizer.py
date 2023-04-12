@@ -26,7 +26,7 @@ def fileEditor(inDict, filename, startAddr, keys, bytesCount, offSet):
 
 
 seed = datetime.now().timestamp()
-outDict = fileExtractor(GAMES_BINARYLIST, 'arm9OG.bin', GAME_OVERLAYS_ADDR, 8)
+outDict = fileExtractor(GAMES_BINARYLIST, 'arm9.bin', GAME_OVERLAYS_ADDR, 8)
 keys = list(outDict.keys())
 random.seed(seed)
 random.Random().shuffle(keys)
