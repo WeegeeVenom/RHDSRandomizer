@@ -27,5 +27,5 @@ A randomizer for Rhythm Heaven DS (or Rhythm Tengoku GOLD as it's called in Japa
 - Allow you to set the seed manually, to allow for consistent scrambles
 - Integrate the Tinke portion into the code to make it easier for the user
 - Archipelago Integration :eyes:
-### Credits
+## Credits
 - @TheAlternateDoctor and @patataofcourse at the Rhythm Heaven Modding Discord for helping me with the research on the code for the game!
