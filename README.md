@@ -3,7 +3,7 @@ A randomizer for Rhythm Heaven DS (or Rhythm Tengoku GOLD as it's called in Japa
 
 ## Requirements
 - Python 3
-- A *\~legally acquired\~* .nds file of `Rhythm Heaven` for the NDS (Can't provide)
+- A *\~legally acquired\~* **US Version** .nds file of `Rhythm Heaven` for the NDS (Can't provide)
 - [Tinke](https://www.romhacking.net/utilities/817/) - Tinke is a program to see, convert, and edit the files of NDS games, very similar to other utilities like Tahaxan and Crystal Tile 2. `Used to edit the arm9.bin file`
 
 ## Usage
@@ -22,10 +22,13 @@ A randomizer for Rhythm Heaven DS (or Rhythm Tengoku GOLD as it's called in Japa
 ### In Development
 - Titles and Descriptions update properly with the randomized games
 ### Planned
-- Flag to toggle remixes, sequels
+- Flag to toggle remixes, sequels (on, off, shuffle separately)
 - Flag to make sequels come after their original games randomized
 - Allow you to set the seed manually, to allow for consistent scrambles
 - Integrate the Tinke portion into the code to make it easier for the user
 - Archipelago Integration :eyes:
+
+## **Note**
+This mod seems to work with the RH Touchless mod, from what I tested. Just make sure to patch the file with the Touchless mod **before** applying the randomization!
 ## Credits
 - @TheAlternateDoctor and @patataofcourse at the Rhythm Heaven Modding Discord for helping me with the research on the code for the game!
