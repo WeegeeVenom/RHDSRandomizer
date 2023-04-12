@@ -2,8 +2,9 @@ import random
 from datetime import datetime
 from traceback import print_exc
 from sys import exc_info
-GAME_OVERLAYS_ADDR = 0x10D50
-#GAMES_BINARYLIST is offset by 60 (first )
+GAME_OVERLAYS_ADDR = 0x10D50 #for arm9.bin
+DESCRIPTIONS_ADDR = 0x61C4 #for overlay9_18.bin
+#GAMES_BINARYLIST is offset by 60 (first is 60 or 3c)
 GAMES_BINARYLIST = [0,0,0,1,1,1,1,1,1,0,
 					0,0,1,1,0,0,0,0,0,1,
 					0,0,0,1,1,1,0,0,1,1,
@@ -16,16 +17,15 @@ GAMES_BINARYLIST = [0,0,0,1,1,1,1,1,1,0,
 					0,0,0,0,0,0,0,0,1,0]
 
 
-def fileExtractor(binaryList, inFile, address, bytesCount): 
+
+def gameOverlayExtractor(binaryList, inFile, address, bytesCount): 
 	outDict = {}
 	with open(inFile, 'rb') as inF:
 		inF.seek(address)
 		for i in binaryList:
 			bytesData = inF.read(bytesCount)
 			if i:
-				#print(int.from_bytes(bytesData[0:2], byteorder = 'little'))
 				outDict[int.from_bytes(bytesData[0:2], byteorder = 'little')] = bytesData
-				#outList.append(bytesData)
 	return outDict
 
 def fileEditor(inDict, filename, startAddr, keys, bytesCount, offSet):
@@ -39,8 +39,7 @@ def fileEditor(inDict, filename, startAddr, keys, bytesCount, offSet):
 if __name__ == '__main__':
 	try:
 		seed = datetime.now().timestamp() 
-		outDict = fileExtractor(GAMES_BINARYLIST, 'arm9.bin', GAME_OVERLAYS_ADDR, 8) #dictionary for game overlays
-		print(outDict)
+		outDict = gameOverlayExtractor(GAMES_BINARYLIST, 'arm9.bin', GAME_OVERLAYS_ADDR, 8) #dictionary for game overlays
 		with open('test.bin', 'wb') as f:
 			for _, ele in outDict.items():
 				f.write(ele)
