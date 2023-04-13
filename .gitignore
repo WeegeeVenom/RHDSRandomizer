@@ -1,5 +1,11 @@
 *test*
-arm*.bin
+HexListTester.py
+extracted/
+overlay*
+*.nds
+*.sav
+List of Descriptions.txt
+arm*
 image_resources/
 # Created by https://www.toptal.com/developers/gitignore/api/windows,sublimetext,python,text
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,sublimetext,python,text
