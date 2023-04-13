@@ -17,7 +17,7 @@ GAMES_BINARYLIST = [0,0,0,1,1,1,1,1,1,0,
 					0,0,0,0,0,0,0,0,1,0]
 
 
-
+#Generates dict of all of the overlays to be swapped
 def gameOverlayExtractor(binaryList, inFile, address, bytesCount): 
 	outDict = {}
 	with open(inFile, 'rb') as inF:
@@ -28,6 +28,7 @@ def gameOverlayExtractor(binaryList, inFile, address, bytesCount):
 				outDict[int.from_bytes(bytesData[0:2], byteorder = 'little')] = bytesData
 	return outDict
 
+#uses the shuffled dictionary to write back into the arm9.bin file
 def fileEditor(inDict, filename, startAddr, keys, bytesCount, offSet):
 	with open(filename, 'r+b') as editF:
 		i = 0
@@ -40,13 +41,11 @@ if __name__ == '__main__':
 	try:
 		seed = datetime.now().timestamp() 
 		outDict = gameOverlayExtractor(GAMES_BINARYLIST, 'arm9.bin', GAME_OVERLAYS_ADDR, 8) #dictionary for game overlays
-		with open('test.bin', 'wb') as f:
-			for _, ele in outDict.items():
-				f.write(ele)
 		keys = list(outDict.keys())
 		random.seed(seed)
 		random.Random().shuffle(keys)
-		fileEditor(outDict, 'test2.bin', GAME_OVERLAYS_ADDR, keys, 8, 60)
+		fileEditor(outDict, 'arm9.bin', GAME_OVERLAYS_ADDR, keys, 8, 60)
+		print("Process complete.")
 	except Exception:
 		print_exc()
 		print('ERROR:', exc_info()[1])
