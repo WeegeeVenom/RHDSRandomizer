@@ -20,10 +20,10 @@ A randomizer for Rhythm Heaven DS (or Rhythm Tengoku GOLD as it's called in Japa
 - Randomizes all 50 of the minigames with each other
 
 ### In Development
-- Direct integration of the extracting/dumping of the files into the ROM
 - Allow you to set the seed manually, to allow for consistent scrambles
-### Planned
 - Titles and Descriptions update properly with the randomized games
+### Planned
+- Direct integration of the extracting/dumping of the files into the ROM
 - Flag to toggle remixes, sequels (on, off, shuffle in their own category)
 - Flag to make sequels come after their original games randomized
 - User interface to set different flags
