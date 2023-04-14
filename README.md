@@ -16,7 +16,7 @@ A randomizer for Rhythm Heaven DS (or Rhythm Tengoku GOLD as it's called in Japa
 7. Click `'Save ROM'`
 8. Enjoy your randomized copy of Rhythm Heaven DS!
 
-## Features
+## Current Features
 - Randomizes all 50 of the minigames with each other
 
 ### In Development
