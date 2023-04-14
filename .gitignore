@@ -1,10 +1,9 @@
 *test*
-HexListTester.py
+random tools/
 extracted/
-overlay*
+*verlay*
 *.nds
 *.sav
-List of Descriptions.txt
 arm*
 image_resources/
 # Created by https://www.toptal.com/developers/gitignore/api/windows,sublimetext,python,text
