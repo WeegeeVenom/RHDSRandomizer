@@ -31,32 +31,33 @@ def gameOverlayExtractor(binaryList, filename, address, bytesCount):
 		input('Press Enter to close this program. ')
 		exit()
 
-
+#TODO: REWRITE FUNCTION
 #uses the shuffled dictionary to write back into the arm9.bin file
-def fileEditor(inDict, filename, startAddr, keys, bytesCount, offSet):
-	try:
-		with open(path.join(filepath, filename), 'r+b') as editF: #Overlays swapping section
-			i = 0
-			for _, ele in inDict.items():
-				editF.seek(startAddr + ((keys[i] - offSet) * bytesCount))
-				editF.write(ele[overlay])
-				i += 1
-	except FileNotFoundError:
-		print_exc()
-		print('ERROR:', exc_info()[1])
-		print('Current working directory: ', getcwd())
-		input('Press Enter to close this program. ')
-		exit()
-	except Exception:
-		print_exc()
-		print('ERROR:', exc_info()[1])
-		input('Press Enter to close this program. ')
-		exit()
+# def fileEditor(inDict, filename, startAddr, keys, bytesCount, offSet):
+# 	try:
+# 		with open(path.join(filepath, filename), 'r+b') as editF: #Overlays swapping section
+# 			i = 0
+# 			for _, ele in inDict.items():
+# 				editF.seek(startAddr + ((keys[i] - offSet) * bytesCount))
+# 				editF.write(ele[overlay])
+# 				i += 1
+# 	except FileNotFoundError:
+# 		print_exc()
+# 		print('ERROR:', exc_info()[1])
+# 		print('Current working directory: ', getcwd())
+# 		input('Press Enter to close this program. ')
+# 		exit()
+# 	except Exception:
+# 		print_exc()
+# 		print('ERROR:', exc_info()[1])
+# 		input('Press Enter to close this program. ')
+# 		exit()
 
 if __name__ == '__main__':
 	try:
 		seed = datetime.now().timestamp() 
 		outDict = gameOverlayExtractor(randoC.GAMES_BINARYLIST, 'arm9.bin', GAME_OVERLAYS_ADDR, 8) #dictionary for game overlays, titles, and descriptions
+		#TODO: Implement function to add the title and desc into the dict (account for keys)
 		keys = list(outDict.keys())
 		random.seed(seed)
 		random.Random().shuffle(keys)
