@@ -56,7 +56,7 @@ def fileEditor(inDict, filename, startAddr, keys, bytesCount, offSet):
 if __name__ == '__main__':
 	try:
 		seed = datetime.now().timestamp() 
-		outDict = gameOverlayExtractor(randoC.GAMES_BINARYLIST, 'arm9.bin', GAME_OVERLAYS_ADDR, 8) #dictionary for game overlays
+		outDict = gameOverlayExtractor(randoC.GAMES_BINARYLIST, 'arm9.bin', GAME_OVERLAYS_ADDR, 8) #dictionary for game overlays, titles, and descriptions
 		keys = list(outDict.keys())
 		random.seed(seed)
 		random.Random().shuffle(keys)
