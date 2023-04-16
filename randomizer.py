@@ -65,15 +65,17 @@ def fileEditor(inDict, filename, startAddr, keys, bytesCount, offSet):
 
 if __name__ == '__main__':
 	try:
-		seed = datetime.now().timestamp() 
+		seed = int(datetime.now().timestamp())
 		outDict = gameOverlayExtractor(GAMES_BINARYLIST, 'arm9.bin', GAME_OVERLAYS_ADDR, 8) #dictionary for game overlays
 		keys = list(outDict.keys())
 		random.seed(seed)
 		random.Random().shuffle(keys)
 		fileEditor(outDict, 'arm9.bin', GAME_OVERLAYS_ADDR, keys, 8, 60)
-		print("Process complete.")
+		print(f"Process complete. Seed: {seed}")
 	except Exception:
 		print_exc()
 		print('ERROR:', exc_info()[1])
 		input('Press Enter to close this program. ')
 		exit()
+
+#TODO: Figure out how to use argv to allow user to set it from console
