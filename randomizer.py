@@ -1,7 +1,8 @@
 import random
 from datetime import datetime
 from traceback import print_exc
-from sys import exc_info
+from sys import exc_info, argv
+import getopt
 from os import path, getcwd
 GAME_OVERLAYS_ADDR = 0x10D50 #for arm9.bin
 DESCRIPTIONS_ADDR = 0x61C4 #for overlay9_18.bin
@@ -16,6 +17,7 @@ GAMES_BINARYLIST = [0,0,0,1,1,1,1,1,1,0,
 					0,0,1,1,1,1,1,1,1,1,
 					1,1,1,1,0,0,0,1,0,0,
 					0,0,0,0,0,0,0,0,1,0]
+argv = argv[1:]
 
 filepath = __file__.rsplit('\\', 1)[0]
 #Generates dict of all of the overlays to be swapped
@@ -66,10 +68,14 @@ def fileEditor(inDict, filename, startAddr, keys, bytesCount, offSet):
 if __name__ == '__main__':
 	try:
 		seed = int(datetime.now().timestamp())
+		options, args = getopt.getopt(argv, "s:", ["seed="])
+		for opt, arg in options:
+			if opt in ['-s', '--seed']:
+				seed = arg
 		outDict = gameOverlayExtractor(GAMES_BINARYLIST, 'arm9.bin', GAME_OVERLAYS_ADDR, 8) #dictionary for game overlays
 		keys = list(outDict.keys())
-		random.seed(seed)
-		random.Random().shuffle(keys)
+		#random.setstate(seed)
+		random.Random(seed).shuffle(keys)
 		fileEditor(outDict, 'arm9.bin', GAME_OVERLAYS_ADDR, keys, 8, 60)
 		print(f"Process complete. Seed: {seed}")
 	except Exception:
